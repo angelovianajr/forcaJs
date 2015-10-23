@@ -67,22 +67,7 @@
             <button id="btnSubmit" class="btn btn-primary btn-lg">Começar</button>
         </div>      
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript">
-    var radio = $('input[name=RadioOptions]:checked').val();
-
-    $('#btnSubmit').click(function() {
-        inserirUsuario($('#userName').val(), radio, 0);
-    });
-
-    function inserirUsuario(nome, radio, valor){
-        $.post('http://localhost:3000/usuarios',
-            {
-                "nome": nome,
-                "dificuldade":radio,
-                "pontos":valor
-            }
-        );
-    }
+    <script type="text/javascript" src="script.js">
     </script>
 </body>
 </html>

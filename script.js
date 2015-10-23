@@ -5,9 +5,8 @@ $('#btnSubmit').click(function() {
 });
 
 function pegarPalavra(){
-  palavra =
   $.get('http://localhost:3000/palavras').done(function(data){
-    console.log(data[parseInt(Math.random()  *10)].texto);
+    palavra = data[parseInt(Math.random()  *10)].texto.split('');
   })
 }
 
