@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<style type="">
+		body{
+			background: #333;
+		}
+
+		h2{
+			text-align: center;
+			color: orange;
+			font-size: 50px;
+		}
+
+		.jumbotron{
+			background: #333;
+			width: 400px;
+			text-align: center;
+			margin: auto;
+			margin-top: 30px;
+			border: 5px solid black;
+		} 
+
+		.btn{
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body onload="inicializar()">
+	<h2></h2>
+
+	<footer>
+		<div class="jumbotron">
+		    <input id="txtChute" type="text"  class="form-control" placeholder="Shimbalacracks">
+	        <button id="btnChute" class="btn btn-primary btn-lg">Let's Chutate</button>
+	    </div>  
+    </footer>   
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		var erros = 0;
+		var palavra = 'javascript';
+		var insert = '';
+		var jogavel = true;
+
+		function inicializar(){
+			palavra = palavra.split('');
+			
+			palavra.forEach(function(char) {
+				if (char !== ' '){
+					insert += '*';
+				}
+				else{
+					insert += ' - ';
+				}	
+			});
+
+			palavra = palavra.join('');
+			$('body').append($('h2').html(insert));
+		};
+
+		function jogada(letra) {
+			var i = 0;
+			var erro = true;
+			palavra = palavra.split('');
+			insert = insert.split('');
+
+			palavra.forEach(function (let) {
+				if (let === letra){
+					insert[i] = letra;
+					erro = false;
+				}
+
+				i++;
+			});
+
+			if(erro){
+				erros++;
+			}
+
+			insert = insert.join('');
+			palavra = palavra.join('');
+			$('h2').empty();
+			$('body').append($('h2').html(insert));
+			verifica();
+		};
+
+		function verifica() {
+			if(erros === limiteErros){
+				alert('Jogador perdeu!');
+			}
+
+			if (palavra === insert){
+				alert('Jogador venceu!');
+			}
+		}
+
+		$('#btnChute').click(function(){
+			var chute = $('#txtChute').val();
+			alert(chute);
+
+			if (chute === palavra){
+				alert('Jogador ganhou! ' + chute);
+			}else{
+				alert('Jogador perdeu!');
+			}
+		})
+
+		$('#txtChute').focus(function(){jogavel = false;});
+		$('#txtChute').blur(function(){jogavel = true;});
+
+		$('body').keypress(function(e){
+			if(jogavel === true){
+				var letra = String.fromCharCode(e.which);
+		  		jogada(letra);
+		  	}
+		});
+		$('body').keyup(function(e){
+		  console.log('keyup', String.fromCharCode( e.which ));
+		});
+	</script> 
+</body>
+</html>
