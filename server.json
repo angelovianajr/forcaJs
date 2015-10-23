@@ -14,9 +14,34 @@
   ],
   "palavras": [
     {
-      "texto": "palavra1",
-      "maxAcertos": 6,
-      "erros": 0
+      "texto": "Cultura"
+    },
+    {
+      "texto": "Trópico"
+    },
+    {
+      "texto": "Dinamite"
+    },
+    {
+      "texto": "Ridículo"
+    },
+    {
+      "texto": "Diplomata"
+    },
+    {
+      "texto": "Tempestade"
+    },
+    {
+      "texto": "Traduzir"
+    },
+    {
+      "texto": "Transatlântico"
+    },
+    {
+      "texto": "Funicular"
+    },
+    {
+      "texto": "Charizard"
     }
   ]
 }
