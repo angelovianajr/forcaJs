@@ -2,10 +2,14 @@ var dificuldade = localStorage.getItem('dificuldade');
 var limiteErros;
 
 $('#btnSubmit').click(function() {
-  inserirUsuario($('#userName').val(), $('input[name="radioOptions"]:checked').val(), 0);
-  console.log($('input[name=RadioOptions]:checked').val());
-  pegarPalavra();
-  window.location.href = 'jogo.html';
+  var nome = $('#userName').val();
+  var dif = $('input[name="radioOptions"]:checked').val();
+  alert(nome + '----' + dif);
+  if ((nome !== 'undefined' || nome !== '') && dif !== 'undefined'){
+    inserirUsuario(nome, dif, 0);
+    console.log($('input[name=RadioOptions]:checked').val());
+    window.location.href = 'jogo.html';
+  }
 });
 
 
@@ -26,6 +30,6 @@ function inserirUsuario(nome, radio, valor){
 
 function pegarPalavra(){
   $.get('http://localhost:3000/palavras').done(function(data){
-    palavra = data[parseInt(Math.random() * data.length)].texto;
+     return data[parseInt(Math.random() * data.length)].texto;
   })
 }
