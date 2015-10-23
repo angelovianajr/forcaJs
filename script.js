@@ -25,8 +25,6 @@ function inserirUsuario(nome, radio, valor){
 
 function pegarPalavra(){
   $.get('http://localhost:3000/palavras').done(function(data){
-      palavra = data.filter(function(elem){
-        return elem.texto.length >= 12;
-      })[0];
+    palavra = data[parseInt(Math.random() * data.length)].texto;
   })
 }
