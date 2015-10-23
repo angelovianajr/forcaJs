@@ -1,0 +1,22 @@
+{
+  "usuarios": [
+    {
+      "nome": "pablo",
+      "pontos": 0,
+      "dificuldade": "normal"
+    },
+    {
+      "nome": "angelo",
+      "pontos": 0,
+      "dificuldade": "nunez",
+      "id": "618da5e0-4af4-41ab-9a22-fb0278261219"
+    }
+  ],
+  "palavras": [
+    {
+      "texto": "palavra1",
+      "maxAcertos": 6,
+      "erros": 0
+    }
+  ]
+}
