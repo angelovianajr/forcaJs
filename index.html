@@ -6,14 +6,18 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<style type="text/css">
 		body{
-			background: #333;
+			background: #222;
+		}
+
+		p{
+			font-size: 5px;
 		}
 
 		h2{
 			font-size: 150px;
 			text-align: center;
 			color: orange;
-			font-family: Arial;
+			font-family: 'Century Gothic', 'Segoei Ul';
 		}
 
 		h2:hover{
@@ -30,12 +34,11 @@
 		}
 
 		.jumbotron{
-			background: #333;
+			background: #222;
 			width: 400px;
 			text-align: center;
 			margin: auto;
-			margin-top: 30px;
-			border: 5px solid black;
+			margin-top: 50px;
 		} 
 
 		.btn{
@@ -65,8 +68,41 @@
                 </label>
             </label>
             <button id="btnSubmit" class="btn btn-primary btn-lg">Começar</button>
+
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+			   Como jogar
+			</button>
+            <<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Como jogar:</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p> 1 - Insira seu nome e selecione sua dificuldade e clique em começar;</p>
+			        <p> 2 - Na tela do jogo, basta digitatar sua letra no teclado;</p>
+			        <p> 3 - Se acertar, a letra sera exibida na palavra;</p>
+			        <p> 4 - Se errar, contará 1 erro à mais;</p>
+			        <p>     * Na dificuldade Normal, 5 erros resultará na sua derrota;</p>
+			        <p>     * Na dificuldade Nunez, 2 erros resultará na sua derrota.</p>
+			        <p> 5 - Você também pode arriscar e chutar a palavra no campo de texto;<p>
+			        <p>     * Se você errar, perde automaticamente;</p>    
+			     	<p> 6 - Você ganha pontos a cada acerto e/ou chute certeiro;</p>
+			        <p>     * Normal: 1 ponto por acerto, 10 por chute certeiro;</p>	
+			        <p>		* Nunez: 2 ponto por acerto, 20 por chute certeiro.</p>
+			        <p>7 - Começe a jogar agora mesmos para ser o lider do ranking!</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Ok</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			
         </div>      
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="script.js">
     </script>
 </body>

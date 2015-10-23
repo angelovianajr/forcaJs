@@ -5,6 +5,7 @@ $('#btnSubmit').click(function() {
   inserirUsuario($('#userName').val(), $('input[name="radioOptions"]:checked').val(), 0);
   console.log($('input[name=RadioOptions]:checked').val());
   pegarPalavra();
+  window.location.href = 'jogo.html';
 });
 
 
