@@ -72,7 +72,7 @@
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 			   Como jogar
 			</button>
-            <<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -99,11 +99,34 @@
 			    </div>
 			  </div>
 			</div>
+
+			<button id="btnLeader" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalTop">
+			   Leaderboard
+			</button>
+			<div class="modal fade" id="modalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Top 5</h4>
+			      </div>
+			      <div class="modal-body">
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Ok</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 			
         </div>      
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/script.js">
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript">
+    	(function() {
+    		getLeaderboard();
+    	})();
     </script>
 </body>
 </html>

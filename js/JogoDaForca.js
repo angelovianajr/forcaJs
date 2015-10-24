@@ -12,7 +12,7 @@ function inicializar(){
 	jogavel = true;
 	jog = 0;
 	letrasJogadas = [];
-	palavra = 'shimbalaie'//pegarPalavra();
+	palavra = pegarPalavra();
 	palavra = palavra.split('');
 			
 	palavra.forEach(function(char) {

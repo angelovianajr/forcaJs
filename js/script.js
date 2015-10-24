@@ -11,10 +11,11 @@ $('#btnSubmit').click(function() {
   }
 });
 
+
 function redirectPage(linkLocation) {
   $("body").fadeOut(2000);
   window.location = linkLocation;
-}
+};
 
 function inserirUsuario(nome, radio, valor){
 
@@ -29,10 +30,24 @@ function inserirUsuario(nome, radio, valor){
       "pontos":valor
     }
   );
-}
+};
 
 function pegarPalavra(){
   $.get('http://localhost:3000/palavras').done(function(data){
      return data[parseInt(Math.random() * data.length)].texto;
   })
-}
+};
+
+function getLeaderboard(){
+  var users;
+  var top;
+  $.get('http://localhost:3000/usuarios').done(function(data){
+     users = data;
+  });
+
+
+  users.forEach(function(user){
+     $('.modal-body').append($('<h2>').html(user.nome + ' - ' + user.pontos));
+  });
+ 
+};
