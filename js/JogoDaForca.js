@@ -87,6 +87,7 @@ $('#txtChute').blur(function(){jogavel = true;});
 $('body').keypress(function(e){
 	if(jogavel === true){
 		var letra = String.fromCharCode(e.which);
+		letra = letra.toLowerCase();
 		if(!letra.search(/^[a-z]+$/)){
 			if (letrasJogadas.indexOf(letra) === -1){
 				jogada(letra);
