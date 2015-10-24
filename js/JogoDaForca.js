@@ -20,7 +20,7 @@ function inicializar(){
 		if (char !== ' '){
 			insert += '*';
 		}else{
-			insert += ' - ';
+			insert += ' ';
 		}	
 	});
 
@@ -70,7 +70,7 @@ function verifica () {
 	}
 
 	if (palavra === insert){
-		threadSleepAfeterRedirect('jogo.html');
+		threadSleepAfeterRedirect('home.html');
 		
 	}
 };
@@ -109,7 +109,7 @@ $('#btnChute').click(function(){
 	if (chute !== ''){
 		if (chute === palavra){
 			audio.src = '';
-			threadSleepAfeterRedirect('jogo.html');
+			threadSleepAfeterRedirect('home.html');
 		}else{
 			audio.src = 'resources/chutefail.mp3';
 			audio.play();
