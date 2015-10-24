@@ -1,3 +1,33 @@
+var game;
+var jogador;
+/*===============
+		Index.html
+=================*/
+
+$('#btnSubmit').click(function() {
+  var nome = $('#userName').val();
+  var dif = $('input[name="radioOptions"]:checked').val();
+
+  if ((nome !== 'undefined' || nome !== '') && dif !== 'undefined'){
+
+		jogador = new Jogador({"nome":nome, "dificuldade":dif});
+
+		var limiteErros;
+
+		dif === 'nunez' ? limiteErros = 2 : limiteErros = 5;
+
+		game = new Jogo({"jogador":jogador, "limiteErros":limiteErros});
+
+
+    $("body").fadeOut(2000, redirectPage('home.html'));
+  }
+});
+//======================================
+
+/*==============
+		Jogo.html
+================*/
+
 $('#btnChute').click(function(){
 	var chute = $('#txtChute').val();
 
@@ -11,16 +41,6 @@ $('#btnChute').click(function(){
 })
 
 
-$('#btnSubmit').click(function() {
-  var nome = $('#userName').val();
-  var dif = $('input[name="radioOptions"]:checked').val();
-  if ((nome !== 'undefined' || nome !== '') && dif !== 'undefined'){
-    inserirUsuario(nome, dif, 0);
-    console.log($('input[name=RadioOptions]:checked').val());
-    $("body").fadeOut(2000, redirectPage('jogo.html'));
-  }
-});
-
 $('#txtChute').focus(function(){game.jogavel = false;});
 $('#txtChute').blur(function(){game.jogavel = true;});
 
@@ -30,6 +50,7 @@ $('body').keypress(function(e){
 		game.jogada(letra);
 	}
 });
+
 $('body').keyup(function(e){
     console.log('keyup', String.fromCharCode( e.which ));
 });
