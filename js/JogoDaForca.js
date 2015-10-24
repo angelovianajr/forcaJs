@@ -66,11 +66,11 @@ function jogada (letra) {
 
 function verifica () {
 	if(erros === limiteErros){
-		threadSleepAfeterRedirectToGameOver();
+		threadSleepAfeterRedirect('gameOver.html');
 	}
 
 	if (palavra === insert){
-		threadSleepAfeterRedirectToGameOver();
+		threadSleepAfeterRedirect('jogo.html');
 		
 	}
 };
@@ -109,11 +109,11 @@ $('#btnChute').click(function(){
 
 	if (chute === palavra){
 		audio.src = '';
-		threadSleepAfeterRedirectToGameOver();
+		threadSleepAfeterRedirect('jogo.html');
 	}else{
 		audio.src = 'resources/chutefail.mp3';
 		audio.play();
-		threadSleepAfeterRedirectToGameOver();
+		threadSleepAfeterRedirect('gameOver.html');
 	}
 })
 
