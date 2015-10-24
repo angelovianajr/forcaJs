@@ -2,7 +2,8 @@ function Jogador( options ){
 	options = options || {};
 
 	this.nome = options.nome;
-	this.pontos = options.pontos;
+	this.dificuldade = options.dificuldade;
+	this.pontos = options.pontos || 0;
 }
 
 Jogador.prototype.inserirJogador = function(){
