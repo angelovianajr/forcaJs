@@ -1,9 +1,10 @@
 function Jogo( options ){
 		options = options || {};
 		this.erros = options.erros || 0;
-		this.palavra = options.palavra || new Palavra();
 		this.insert = options.insert || '';
 		this.jogavel = true;
+		this.dificuldade = options.dificuldade || "normal";
+		this.palavra = options.palavra || new Palavra(dificuldade);
 
 		this.jogador = options.jogador || new Jogador();
 
