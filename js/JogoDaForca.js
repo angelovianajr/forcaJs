@@ -10,7 +10,7 @@ function inicializar(){
 	erros = 0;
 	insert = '';
 	jogavel = true;
-	jog = 0;
+	numJogadas = 0;
 	letrasJogadas = [];
 	getDica();
 	palavra = palavra.split('');
@@ -21,8 +21,6 @@ function inicializar(){
 		}else{
 			insert += ' ';
 		}	
-			insert += ' - ';
-		}
 	});
 
 	palavra = palavra.join('');
@@ -33,7 +31,7 @@ function jogada (letra) {
 	var i = 0;
 	var erro = true;
 	var music = new Audio();
-	letrasJogadas[jog] = letra;
+	letrasJogadas[numJogadas] = letra;
 	palavra = palavra.split('');
 	insert = insert.split('');
 
@@ -55,7 +53,7 @@ function jogada (letra) {
 	  	$('p').append($('#err').html(erros));
 	}
 
-	jog++;
+	numJogadas++;
 	insert = insert.join('');
 	palavra = palavra.join('');
 	$('h2').empty();
