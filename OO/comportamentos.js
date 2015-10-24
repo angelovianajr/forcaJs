@@ -10,13 +10,13 @@ $('#btnSubmit').click(function() {
 
   if ((nome !== 'undefined' || nome !== '') && dif !== 'undefined'){
 
-		jogador = new Jogador({"nome":nome, "dificuldade":dif});
-
 		var limiteErros;
 
 		dif === 'nunez' ? limiteErros = 2 : limiteErros = 5;
 
-		game = new Jogo({"jogador":jogador, "limiteErros":limiteErros});
+		jogador = new Jogador({"nome":nome});
+
+		game = new Jogo({"jogador":jogador, "limiteErros":limiteErros, "dificuldade":dif});
 
 
     $("body").fadeOut(2000, redirectPage('home.html'));
@@ -33,7 +33,7 @@ $('#btnChute').click(function(){
 
 	if (chute === game.palavra){
 		alert('Jogador ganhou! ' + chute);
-		redirectPage('index.html');
+		redirectPage('home.html');
 	}else{
 		alert('Jogador perdeu!');
 		redirectPage('index.html');
