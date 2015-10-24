@@ -42,10 +42,22 @@ function inserirUsuario(nome, radio, valor){
 
 function pegarPalavra(){
   $.get('http://localhost:3000/palavras').done(function(data){
-    var index = parseInt(Math.random() * data.length);
-    alert(index);
-    return data[index].texto;
-  })
+    var palavrasDisponiveis;
+    if( dificuldade === 'nunez' ){
+      palavrasDisponiveis = data.filter(function(elem){
+        return elem.texto.length >= 12;
+      });
+    }else{
+      palavrasDisponiveis = data;
+    }
+    var index = parseInt(Math.random() * palavrasDisponiveis.length);
+    palavra = palavrasDisponiveis[index].texto;
+
+    inicializar();
+    //Coloquei o inicializar aqui pois ele só
+    //pode executar depois da variavel palavra estar definida
+  });
+
 };
 
 function getLeaderboard(){
