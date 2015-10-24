@@ -7,12 +7,12 @@ var letrasJogadas;
 
 
 function inicializar(){
+	
 	erros = 0;
 	insert = '';
 	jogavel = true;
 	jog = 0;
 	letrasJogadas = [];
-	palavra = 'javascript';//pegarPalavra();
 	getDica();
 	palavra = palavra.split('');
 			
