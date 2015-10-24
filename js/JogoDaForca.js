@@ -7,7 +7,6 @@ var letrasJogadas;
 
 
 function inicializar(){
-	
 	erros = 0;
 	insert = '';
 	jogavel = true;
@@ -15,13 +14,15 @@ function inicializar(){
 	letrasJogadas = [];
 	getDica();
 	palavra = palavra.split('');
-			
+
 	palavra.forEach(function(char) {
 		if (char !== ' '){
 			insert += '*';
 		}else{
 			insert += ' ';
 		}	
+			insert += ' - ';
+		}
 	});
 
 	palavra = palavra.join('');
@@ -71,7 +72,6 @@ function verifica () {
 
 	if (palavra === insert){
 		threadSleepAfeterRedirect('home.html');
-		
 	}
 };
 
@@ -87,7 +87,7 @@ function playMusic(url){
 	audio.loop = true;
 	audio.play();
 }
-	
+
 function mute(){
 	if (audio.muted){
 		audio.muted = false;
@@ -135,4 +135,3 @@ $('body').keypress(function(e){
 $('body').keyup(function(e){
     console.log('keyup', String.fromCharCode( e.which ));
 });
-
