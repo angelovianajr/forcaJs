@@ -37,6 +37,7 @@ function jogada (letra) {
 
 	if(erro === true){
 	    erros++;
+	  	$('p').append($('span').html(erros));
 	}
 
 	insert = insert.join('');
@@ -49,12 +50,12 @@ function jogada (letra) {
 function verifica () {
 	if(erros === limiteErros){
 		alert('Jogador perdeu!' + erros + ' erros');
-		window.location.href = 'index.html';
+		redirectPage('index.html');
 	}
 
 	if (palavra === insert){
 		alert('Jogador venceu!');
-		window.location.href = 'index.html';
+		redirectPage('index.html');
 	}
 };
 
@@ -63,10 +64,10 @@ $('#btnChute').click(function(){
 
 	if (chute === palavra){
 		alert('Jogador ganhou! ' + chute);
-		window.location.href = 'index.html';
+		redirectPage('index.html');
 	}else{
 		alert('Jogador perdeu!');
-		window.location.href = 'index.html';
+		redirectPage('index.html');
 	}
 })
 
@@ -81,4 +82,9 @@ $('body').keypress(function(e){
 });
 $('body').keyup(function(e){
     console.log('keyup', String.fromCharCode( e.which ));
+});
+
+$(document).ready(function() {
+	$("body").css("display", "none");
+	$("body").fadeIn(1000);
 });

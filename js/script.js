@@ -4,14 +4,17 @@ var limiteErros;
 $('#btnSubmit').click(function() {
   var nome = $('#userName').val();
   var dif = $('input[name="radioOptions"]:checked').val();
-  alert(nome + '----' + dif);
   if ((nome !== 'undefined' || nome !== '') && dif !== 'undefined'){
     inserirUsuario(nome, dif, 0);
     console.log($('input[name=RadioOptions]:checked').val());
-    window.location.href = 'jogo.html';
+    $("body").fadeOut(2000, redirectPage('jogo.html'));
   }
 });
 
+function redirectPage(linkLocation) {
+  $("body").fadeOut(2000);
+  window.location = linkLocation;
+}
 
 function inserirUsuario(nome, radio, valor){
 

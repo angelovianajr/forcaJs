@@ -15,6 +15,12 @@
 			font-size: 100px;
 		}
 
+		.textError{
+			color: red;
+			text-align: center;
+			font-size: 30px;
+		}
+
 		.jumbotron{
 			background: #222;
 			width: 400px;
@@ -30,14 +36,15 @@
 </head>
 <body>
 	<h2></h2>
+	<div class="jumbotron">
+	    <input id="txtChute" type="text"  class="form-control" placeholder="Shimbalacracks">
+	    <button id="btnChute" class="btn btn-primary btn-lg">Let's Chutate</button>
+	</div>  
 
-	<footer>
-		<div class="jumbotron">
-		    <input id="txtChute" type="text"  class="form-control" placeholder="Shimbalacracks">
-	        <button id="btnChute" class="btn btn-primary btn-lg">Let's Chutate</button>
-	    </div>  
-    </footer>   
-    
+	<div class="textError">
+    	<p>Erros: <span></span></p>
+    </div>
+
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/JogoDaForca.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
