@@ -6,7 +6,6 @@ $('#btnSubmit').click(function() {
   var nome = $('#userName').val();
   var dif = $('input[name="radioOptions"]:checked').val();
   if (nome !== '' && typeof dif !== 'undefined'){
-    alert(typeof dif);
     btnSound();
     inserirUsuario(nome, dif, 0);
     console.log($('input[name=RadioOptions]:checked').val());

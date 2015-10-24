@@ -2,9 +2,9 @@ var erros;
 var palavra;
 var insert;
 var jogavel;
-var jog;
+var numJogadas;
 var letrasJogadas;
-
+var muted;
 
 function inicializar(){
 	erros = 0;
@@ -12,6 +12,7 @@ function inicializar(){
 	jogavel = true;
 	numJogadas = 0;
 	letrasJogadas = [];
+	muted = false;
 	getDica();
 	palavra = palavra.split('');
 
@@ -38,7 +39,8 @@ function jogada (letra) {
 	palavra.forEach(function (let) {
 		if (let === letra){
 			music.src = 'resources/coin.mp3';
-			music.play();
+			if(muted !== true)
+				music.play();
 			insert[i] = letra;
 			erro = false;
 		}
@@ -48,7 +50,8 @@ function jogada (letra) {
 
 	if(erro === true){
 		music.src = 'resources/error.mp3';
-		music.play();
+		if(muted !== true)
+			music.play();
 	    erros++;
 	  	$('p').append($('#err').html(erros));
 	}
@@ -87,9 +90,12 @@ function playMusic(url){
 }
 
 function mute(){
-	if (audio.muted){
+	if (muted === true){
+		muted = false;
 		audio.muted = false;
-	}else{
+	}
+	else{
+		muted = true;
 		audio.muted = true;
 	}
 }
@@ -110,7 +116,8 @@ $('#btnChute').click(function(){
 			threadSleepAfeterRedirect('home.html');
 		}else{
 			audio.src = 'resources/chutefail.mp3';
-			audio.play();
+			if(muted !== true)
+				audio.play();
 			threadSleepAfeterRedirect('gameOver.html');
 		}
 	}
