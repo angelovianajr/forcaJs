@@ -106,14 +106,15 @@ window.addEventListener('load', playMusic('resources/MainTheme.mp3'));
 $('#btnChute').click(function(){
 	var chute = $('#txtChute').val();
 	var audio = new Audio();
-
-	if (chute === palavra){
-		audio.src = '';
-		threadSleepAfeterRedirect('jogo.html');
-	}else{
-		audio.src = 'resources/chutefail.mp3';
-		audio.play();
-		threadSleepAfeterRedirect('gameOver.html');
+	if (chute !== ''){
+		if (chute === palavra){
+			audio.src = '';
+			threadSleepAfeterRedirect('jogo.html');
+		}else{
+			audio.src = 'resources/chutefail.mp3';
+			audio.play();
+			threadSleepAfeterRedirect('gameOver.html');
+		}
 	}
 })
 
