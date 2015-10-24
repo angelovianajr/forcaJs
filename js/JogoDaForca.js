@@ -105,10 +105,14 @@ window.addEventListener('load', playMusic('resources/MainTheme.mp3'));
 
 $('#btnChute').click(function(){
 	var chute = $('#txtChute').val();
+	var audio = new Audio();
 
 	if (chute === palavra){
+		audio.src = '';
 		threadSleepAfeterRedirectToGameOver();
 	}else{
+		audio.src = 'resources/chutefail.mp3';
+		audio.play();
 		threadSleepAfeterRedirectToGameOver();
 	}
 })
