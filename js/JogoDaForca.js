@@ -123,6 +123,7 @@ $('#btnChute').click(function(){
 	}
 })
 
+$('#btnDica').click(function(){ if(muted !== true) btnSound(); });
 $('#txtChute').focus(function(){jogavel = false;});
 $('#txtChute').blur(function(){jogavel = true;});
 
