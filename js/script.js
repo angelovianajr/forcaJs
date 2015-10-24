@@ -5,15 +5,17 @@ var jogador;
 $('#btnSubmit').click(function() {
   var nome = $('#userName').val();
   var dif = $('input[name="radioOptions"]:checked').val();
-  if ((nome !== 'undefined' || nome !== '') && dif !== 'undefined'){
+  if (nome !== '' && dif !== 'undefined'){
+    btnSound();
     inserirUsuario(nome, dif, 0);
     console.log($('input[name=RadioOptions]:checked').val());
-    redirectPage('jogo.html');
+    threadSleepAfeterRedirect('jogo.html', 1000);
   }
 });
 
 $('#btnCont').click(function(){
-  redirectPage('index.html');
+  btnSound();
+  threadSleepAfeterRedirect('index.html', 1000);
 });
 
 
@@ -77,11 +79,17 @@ function getLeaderboard(){
  
 };
 
-function threadSleepAfeterRedirect(url){
+function threadSleepAfeterRedirect(url, milsec){
   setTimeout(function(){
     redirectPage(url, 2000);
-  }, 1500);
+  }, milsec || 1500);
 };
+
+function btnSound(){
+  var audio = new Audio();
+  audio.src = 'resources/btn.mp3';
+  audio.play(); 
+}
 
 $(document).ready(function() {
   $("body").css("display", "none");
