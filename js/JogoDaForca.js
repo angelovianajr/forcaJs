@@ -67,7 +67,11 @@ function jogada (letra) {
 };
 
 function verifica () {
+	var audio = new Audio();
 	if(erros === limiteErros){
+		audio.src = 'resources/youlose.mp3';
+		if(muted !== true)
+			audio.play();
 		threadSleepAfeterRedirect('gameOver.html');
 	}
 
