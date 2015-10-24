@@ -1,10 +1,17 @@
-var erros = 0;
-var palavra = '';
-var insert = '';
-var jogavel = true;
+var erros;
+var palavra;
+var insert;
+var jogavel;
+var jog;
+var letrasJogadas;
 
 
 function inicializar(){
+	erros = 0;
+	insert = '';
+	jogavel = true;
+	jog = 0;
+	letrasJogadas = [];
 	palavra = 'shimbalaie'//pegarPalavra();
 	palavra = palavra.split('');
 			
@@ -23,6 +30,7 @@ function inicializar(){
 function jogada (letra) {
 	var i = 0;
 	var erro = true;
+	letrasJogadas[jog] = letra;
 	palavra = palavra.split('');
 	insert = insert.split('');
 
@@ -40,10 +48,12 @@ function jogada (letra) {
 	  	$('p').append($('span').html(erros));
 	}
 
+	jog++;
 	insert = insert.join('');
 	palavra = palavra.join('');
 	$('h2').empty();
 	$('body').append($('h2').html(insert));
+	$('label').append($('h1').html(letrasJogadas + ''));
 	verifica();
 };
 
@@ -77,7 +87,11 @@ $('#txtChute').blur(function(){jogavel = true;});
 $('body').keypress(function(e){
 	if(jogavel === true){
 		var letra = String.fromCharCode(e.which);
-		jogada(letra);
+		if(!letra.search(/^[a-z]+$/)){
+			if (letrasJogadas.indexOf(letra) === -1){
+				jogada(letra);
+			}
+		}
 	}
 });
 $('body').keyup(function(e){
