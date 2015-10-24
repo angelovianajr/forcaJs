@@ -18,6 +18,8 @@ $('#btnCont').click(function(){
   threadSleepAfeterRedirect('index.html', 1000);
 });
 
+$('#btnLeader').click(function(){ btnSound(); })
+$('#btnComoJogar').click(function(){ btnSound(); });
 
 function redirectPage(linkLocation, num) {
   if(!num){

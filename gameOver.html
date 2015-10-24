@@ -56,7 +56,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript">
-    	
+    	(function() {
+    		var audio = new Audio();
+    		audio.src = 'resources/gameOver.mp3';
+    		audio.play();
+    	})();
     </script>
 </body>
 </html>

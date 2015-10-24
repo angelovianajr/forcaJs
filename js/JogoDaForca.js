@@ -70,7 +70,11 @@ function jogada (letra) {
 };
 
 function verifica () {
+	var audio = new Audio();
 	if(erros === limiteErros){
+		audio.src = 'resources/youlose.mp3';
+		if(muted !== true)
+			audio.play();
 		threadSleepAfeterRedirect('gameOver.html');
 	}
 
@@ -126,6 +130,7 @@ $('#btnChute').click(function(){
 	}
 })
 
+$('#btnDica').click(function(){ if(muted !== true) btnSound(); });
 $('#txtChute').focus(function(){jogavel = false;});
 $('#txtChute').blur(function(){jogavel = true;});
 
