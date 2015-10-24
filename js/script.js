@@ -68,7 +68,7 @@ function getLeaderboard(){
 function threadSleepAfeterRedirectToGameOver(){
   setTimeout(function(){
     redirectPage('gameOver.html', 2000);
-  }, 700);
+  }, 1000);
 };
 
 $(document).ready(function() {

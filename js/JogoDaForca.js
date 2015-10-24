@@ -31,12 +31,15 @@ function inicializar(){
 function jogada (letra) {
 	var i = 0;
 	var erro = true;
+	var music = new Audio();
 	letrasJogadas[jog] = letra;
 	palavra = palavra.split('');
 	insert = insert.split('');
 
 	palavra.forEach(function (let) {
 		if (let === letra){
+			music.src = 'resources/coin.mp3';
+			music.play();
 			insert[i] = letra;
 			erro = false;
 		}
@@ -45,6 +48,8 @@ function jogada (letra) {
 	});
 
 	if(erro === true){
+		music.src = 'resources/error.mp3';
+		music.play();
 	    erros++;
 	  	$('p').append($('#err').html(erros));
 	}
@@ -74,6 +79,29 @@ function getDica(){
 	var index = parseInt(Math.random() * palavra.length);
 	$('#dicaModal').append($('<a>').html('A palavra contém a letra: ' + palavra[index]));
 };
+
+var audio;
+function playMusic(url){
+	audio = new Audio();
+	audio.src = url;
+	audio.loop = true;
+	audio.play();
+}
+	
+function mute(){
+	if (audio.muted){
+		audio.muted = false;
+	}else{
+		audio.muted = true;
+	}
+}
+
+$('#btnMute').click(function(){
+	mute();
+});
+
+window.addEventListener('load', playMusic('resources/MainTheme.mp3'));
+
 
 $('#btnChute').click(function(){
 	var chute = $('#txtChute').val();

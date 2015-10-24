@@ -58,16 +58,18 @@
 <body>
 	<h2>Jogo da Forca</h2>
         <div class="jumbotron">
-            <input id="userName" type="text"  class="form-control" placeholder="Nome de Usuário">
-            <label class="text lb"> Dificuldade:
-                <label class="radio-inline">
-                    <input type="radio" name="radioOptions" id="rbNormal" value="normal"> Normal
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="radioOptions" id="rbNunez" value="nunez"> Nunez
-                </label>
-            </label>
-            <button id="btnSubmit" class="btn btn-primary btn-lg">Começar</button>
+        	<form action="jogo.html" method="post">
+	            <input id="userName" type="text"  class="form-control" placeholder="Nome de Usuário">
+	            <label class="text lb"> Dificuldade:
+	                <label class="radio-inline">
+	                    <input type="radio" name="radioOptions" id="rbNormal" value="normal"> Normal
+	                </label>
+	                <label class="radio-inline">
+	                    <input type="radio" name="radioOptions" id="rbNunez" value="nunez"> Nunez
+	                </label>
+	            </label>
+	            <button id="btnSubmit" type="submit" class="btn btn-primary btn-lg">Começar</button>
+       	    </form>
 
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 			   Como jogar
