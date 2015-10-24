@@ -5,8 +5,10 @@ var jogavel;
 var numJogadas;
 var letrasJogadas;
 var muted;
+var pontos;
 
 function inicializar(){
+	pontos = 0;
 	erros = 0;
 	insert = '';
 	jogavel = true;
@@ -21,7 +23,7 @@ function inicializar(){
 			insert += '*';
 		}else{
 			insert += ' ';
-		}	
+		}
 	});
 
 	palavra = palavra.join('');
@@ -38,6 +40,7 @@ function jogada (letra) {
 
 	palavra.forEach(function (let) {
 		if (let === letra){
+			dif === 'nunez' ? pontos+=2 : pontos++;
 			music.src = 'resources/coin.mp3';
 			if(muted !== true)
 				music.play();
