@@ -1,5 +1,6 @@
 var dificuldade = localStorage.getItem('dificuldade');
 var limiteErros;
+var jogador;
 
 $('#btnSubmit').click(function() {
   var nome = $('#userName').val();
@@ -7,13 +8,19 @@ $('#btnSubmit').click(function() {
   if ((nome !== 'undefined' || nome !== '') && dif !== 'undefined'){
     inserirUsuario(nome, dif, 0);
     console.log($('input[name=RadioOptions]:checked').val());
-    $("body").fadeOut(2000, redirectPage('jogo.html'));
+    redirectPage('jogo.html');
   }
 });
 
+$('#btnCont').click(function(){
+  redirectPage('index.html');
+});
 
-function redirectPage(linkLocation) {
-  $("body").fadeOut(2000);
+
+function redirectPage(linkLocation, num) {
+  if(!num){
+    $('body').fadeOut(num);
+  }
   window.location = linkLocation;
 };
 
@@ -23,31 +30,48 @@ function inserirUsuario(nome, radio, valor){
 
   limiteErros = ( dificuldade === 'nunez' ) ? 2 : 5;
 
-  $.post('http://localhost:3000/usuarios',
+   $.post('http://localhost:3000/usuarios',
     {
       "nome": nome,
       "dificuldade":radio,
       "pontos":valor
-    }
-  );
+    });
+
+   location.replace('home.html?nome='+nome+'&dificuldade='+radio);
 };
 
 function pegarPalavra(){
   $.get('http://localhost:3000/palavras').done(function(data){
-     return data[parseInt(Math.random() * data.length)].texto;
+    var index = parseInt(Math.random() * data.length);
+    alert(index);
+    return data[index].texto;
   })
 };
 
 function getLeaderboard(){
-  var users;
+  var users = [];
   var top;
   $.get('http://localhost:3000/usuarios').done(function(data){
      users = data;
   });
 
+  users.sort(function(a, b){
+      return a.pontos < b.pontos;
+  });
 
   users.forEach(function(user){
-     $('.modal-body').append($('<h2>').html(user.nome + ' - ' + user.pontos));
+     $('#leaderModal').append($('<h2>').html(user.nome + ' - ' + user.pontos));
   });
  
 };
+
+function threadSleepAfeterRedirectToGameOver(){
+  setTimeout(function(){
+    redirectPage('gameOver.html', 2000);
+  }, 700);
+};
+
+$(document).ready(function() {
+  $("body").css("display", "none");
+  $("body").fadeIn(1000);
+});

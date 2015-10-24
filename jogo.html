@@ -15,10 +15,25 @@
 			font-size: 100px;
 		}
 
+		a{
+			font-size: 50px;
+		}
+
 		.textError{
 			color: red;
 			text-align: center;
 			font-size: 30px;
+		}
+
+		.panel{
+			background: #222;
+			width: 800px;
+			height: 150px;
+			text-align: center;
+			margin: auto;
+			margin-top: 30px;
+			font-size: 25px;
+			color: lime;
 		}
 
 		.jumbotron{
@@ -39,13 +54,42 @@
 	<div class="jumbotron">
 	    <input id="txtChute" type="text"  class="form-control" placeholder="Shimbalacracks">
 	    <button id="btnChute" class="btn btn-primary btn-lg">Let's Chutate</button>
+	    <button id="btnDica" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalDica">
+			Dica
+		</button>
+		<div class="modal fade" id="modalDica" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+				    <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Dica</h4>
+				     </div>
+				     <div id="dicaModal" class="modal-body">
+				      	
+				     </div>
+				     <div class="modal-footer">
+				        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Ok</button>
+				     </div>
+				</div>
+		    </div>
+		</div>
 	</div>  
 
 	<div class="textError">
-    	<p>Erros: <span></span></p>
+    	<p>Erros: <span id="err"></span></p>
     </div>
 
+	<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Letras jogadas</h3>
+		 </div>
+		 <div class="panel-body">
+		 	<label><h1></h1></label>
+		</div>
+	</div>
+	
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/JogoDaForca.js"></script>
 	<script type="text/javascript">

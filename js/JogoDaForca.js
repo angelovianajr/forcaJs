@@ -12,7 +12,8 @@ function inicializar(){
 	jogavel = true;
 	jog = 0;
 	letrasJogadas = [];
-	palavra = pegarPalavra();
+	palavra = 'javascript';//pegarPalavra();
+	getDica();
 	palavra = palavra.split('');
 			
 	palavra.forEach(function(char) {
@@ -45,7 +46,7 @@ function jogada (letra) {
 
 	if(erro === true){
 	    erros++;
-	  	$('p').append($('span').html(erros));
+	  	$('p').append($('#err').html(erros));
 	}
 
 	jog++;
@@ -54,30 +55,33 @@ function jogada (letra) {
 	$('h2').empty();
 	$('body').append($('h2').html(insert));
 	$('label').append($('h1').html(letrasJogadas + ''));
+	$('#btnDica').disabled = true;
 	verifica();
 };
 
 function verifica () {
 	if(erros === limiteErros){
-		alert('Jogador perdeu!' + erros + ' erros');
-		redirectPage('index.html');
+		threadSleepAfeterRedirectToGameOver();
 	}
 
 	if (palavra === insert){
-		alert('Jogador venceu!');
-		redirectPage('index.html');
+		threadSleepAfeterRedirectToGameOver();
+		
 	}
+};
+
+function getDica(){
+	var index = parseInt(Math.random() * palavra.length);
+	$('#dicaModal').append($('<a>').html('A palavra contém a letra: ' + palavra[index]));
 };
 
 $('#btnChute').click(function(){
 	var chute = $('#txtChute').val();
 
 	if (chute === palavra){
-		alert('Jogador ganhou! ' + chute);
-		redirectPage('index.html');
+		threadSleepAfeterRedirectToGameOver();
 	}else{
-		alert('Jogador perdeu!');
-		redirectPage('index.html');
+		threadSleepAfeterRedirectToGameOver();
 	}
 })
 
@@ -99,7 +103,3 @@ $('body').keyup(function(e){
     console.log('keyup', String.fromCharCode( e.which ));
 });
 
-$(document).ready(function() {
-	$("body").css("display", "none");
-	$("body").fadeIn(1000);
-});
