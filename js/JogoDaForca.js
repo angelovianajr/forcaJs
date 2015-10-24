@@ -7,7 +7,7 @@ var letrasJogadas;
 
 
 function inicializar(){
-	
+
 	erros = 0;
 	insert = '';
 	jogavel = true;
@@ -15,13 +15,13 @@ function inicializar(){
 	letrasJogadas = [];
 	getDica();
 	palavra = palavra.split('');
-			
+
 	palavra.forEach(function(char) {
 		if (char !== ' '){
 			insert += '*';
 		}else{
 			insert += ' - ';
-		}	
+		}
 	});
 
 	palavra = palavra.join('');
@@ -70,8 +70,8 @@ function verifica () {
 	}
 
 	if (palavra === insert){
-		threadSleepAfeterRedirect('jogo.html');
-		
+		threadSleepAfeterRedirect('home.html');
+
 	}
 };
 
@@ -87,7 +87,7 @@ function playMusic(url){
 	audio.loop = true;
 	audio.play();
 }
-	
+
 function mute(){
 	if (audio.muted){
 		audio.muted = false;
@@ -109,7 +109,7 @@ $('#btnChute').click(function(){
 	if (chute !== ''){
 		if (chute === palavra){
 			audio.src = '';
-			threadSleepAfeterRedirect('jogo.html');
+			threadSleepAfeterRedirect('home.html');
 		}else{
 			audio.src = 'resources/chutefail.mp3';
 			audio.play();
@@ -135,4 +135,3 @@ $('body').keypress(function(e){
 $('body').keyup(function(e){
     console.log('keyup', String.fromCharCode( e.which ));
 });
-
