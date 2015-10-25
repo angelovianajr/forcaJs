@@ -92,6 +92,30 @@ function btnSound(){
   audio.play(); 
 }
 
+var audio;
+var muted = false;
+function playMusic(url){
+  audio = new Audio();
+  audio.src = url;
+  audio.loop = true;
+  audio.play();
+};
+
+function mute(){
+  if (muted === true){
+    muted = false;
+    audio.muted = false;
+  }
+  else{
+    muted = true;
+    audio.muted = true;
+  }
+};
+
+$('#btnMute').click(function(){
+  mute();
+});
+
 $(document).ready(function() {
   $("body").css("display", "none");
   $("body").fadeIn(1000);

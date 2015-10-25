@@ -9,6 +9,11 @@
 			background: #222;
 		}
 
+		footer{
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
 		p{
 			font-size: 1px;
 			color: orange;
@@ -23,10 +28,6 @@
 			text-align: center;
 			color: orange;
 			font-family: 'Century Gothic', 'Segoei Ul';
-		}
-
-		h2:hover{
-			color: black;
 		}
 
 		.radio-inline{
@@ -61,7 +62,7 @@
 	</style>
 </head>
 <body>
-	<h2>JForca Arcade</h2>
+	<h2 id="mainTitle">JForca Arcade</h2>
         <div class="jumbotron"> 	
 	        <input id="userName" type="text"  class="form-control" placeholder="Nome de Usuário">
 	            <label class="text lb"> Dificuldade:
@@ -125,8 +126,11 @@
 			    </div>
 			  </div>
 			</div>
-
         </div>
+
+    <footer>
+    	<button id="btnMute" type="button" class="btn btn-primary btn-lg">Mute</button>
+    </footer>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/user.js"></script>
@@ -136,6 +140,18 @@
     		carregarJogadores();
     		setTimeout(function(){getLeaderboard();}, 1000);
     	})();
+
+    	window.addEventListener('load', playMusic('resources/main.mp3'));
+
+    	var textoPiscante = $('#mainTitle');
+
+		window.setInterval( function() {
+		    textoPiscante.css( 'visibility', 'hidden' );
+		    
+		    window.setTimeout( function() {
+		        textoPiscante.css( 'visibility', 'visible' );
+		    }, 150 );
+		}, 1 * 1000 );
     </script>
 </body>
 </html>

@@ -119,41 +119,16 @@ function fimDeJogo(tipo){
 	}
 };
 
-var audio;
-function playMusic(url){
-	audio = new Audio();
-	audio.src = url;
-	audio.loop = true;
-	audio.play();
-};
-
-function mute(){
-	if (muted === true){
-		muted = false;
-		audio.muted = false;
-	}
-	else{
-		muted = true;
-		audio.muted = true;
-	}
-};
-
-$('#btnMute').click(function(){
-	mute();
-});
-
-window.addEventListener('load', playMusic('resources/MainTheme.mp3'));
-
-
 $('#btnChute').click(function(){
 	var chute = $('#txtChute').val();
 	var audio = new Audio();
 	if (chute !== ''){
 		if (chute === palavra){
-			audio.src = '';
-			if(muted !== true)
-				audio.play();
 			user.pontos += dificuldadeAtual === 'nunez' ? 20 : 10;
+			audio.src = 'resources/chuteCerteiro.mp3';
+			if(muted !== true){
+				audio.play();
+			}
 			fimDeJogo('vitoria');
 		}else{
 			audio.src = 'resources/chutefail.mp3';
