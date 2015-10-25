@@ -31,88 +31,51 @@ $('#btnCont').click(function(){
 
 $('#btnLeader').click(function(){ btnSound(); })
 $('#btnComoJogar').click(function(){ btnSound(); });
-//============================================================
-function redirectPage(linkLocation, num) {
-  if(!num){
-    $('body').fadeOut(num);
-  }
-  window.location = linkLocation;
-};
 
-function inserirUsuario(nome, dif, valor){
 
-  localStorage["usuarios"] = JSON.stringfy({
-    "nome": nome,
-    "pontos":valor
-  });
+$('#btnChute').click(function(){
+	var chute = $('#txtChute').val();
+	var audio = new Audio();
+	if (chute !== ''){
+		if (chute === palavra){
+			audio.src = '';
+			threadSleepAfeterRedirect('home.html');
+		}else{
+			audio.src = 'resources/chutefail.mp3';
+			if(muted !== true)
+				audio.play();
+			threadSleepAfeterRedirect('gameOver.html');
+		}
+	}
+})
 
-   $.post('http://localhost:3000/usuarios',
-    {
-      "nome": nome,
-      "dificuldade":dif,
-      "pontos":valor
-    });
+$('#btnDica').click(function(){ if(muted !== true) btnSound(); });
+$('#txtChute').focus(function(){jogavel = false;});
+$('#txtChute').blur(function(){jogavel = true;});
 
-   location.replace('home.html?nome='+nome+'&dificuldade='+dif);
-};
-
-function pegarPalavra(){
-  $.get('http://localhost:3000/palavras').done(function(data){
-    var palavrasDisponiveis;
-    if( dificuldade === 'nunez' ){
-      palavrasDisponiveis = data.filter(function(elem){
-        return elem.texto.length >= 12;
-      });
-    }else{
-      palavrasDisponiveis = data;
-    }
-    var index = parseInt(Math.random() * palavrasDisponiveis.length);
-    palavra = palavrasDisponiveis[index].texto;
-
-    inicializar();
-    //Coloquei o inicializar aqui pois ele só
-    //pode executar depois da variavel palavra estar definida
-  });
-
-};
-
-function getLeaderboard(){
-  var users = [];
-  var top;
-  $.get('http://localhost:3000/usuarios').done(function(data){
-     users = data;
-  });
-
-  users.sort(function(a, b){
-      return a.pontos < b.pontos;
-  });
-
-  users.forEach(function(user){
-     $('#leaderModal').append($('<h2>').html(user.nome + ' - ' + user.pontos));
-  });
-
-};
-
-function threadSleepAfeterRedirect(url, milsec){
-  setTimeout(function(){
-    redirectPage(url, 2000);
-  }, milsec || 1500);
-};
-
-function btnSound(){
-  var audio = new Audio();
-  audio.src = 'resources/btn.mp3';
-  audio.play();
-}
-
-$(document).ready(function() {
-  $("body").css("display", "none");
-  $("body").fadeIn(1000);
+$('body').keypress(function(e){
+	if(jogavel === true){
+		var letra = String.fromCharCode(e.which);
+		letra = letra.toLowerCase();
+		if(!letra.search(/^[a-z]+$/)){
+			if (letrasJogadas.indexOf(letra) === -1){
+				jogada(letra);
+			}
+		}
+	}
+});
+$('body').keyup(function(e){
+    console.log('keyup', String.fromCharCode( e.which ));
 });
 
+$('#btnMute').click(function(){
+	mute();
+});
 
+//============================================================
 
 function inicializar(){
+  pegarPalavra();
 	pontos = 0;
 	erros = 0;
 	insert = '';
@@ -212,45 +175,77 @@ function mute(){
 		audio.muted = true;
 	}
 }
-
-$('#btnMute').click(function(){
-	mute();
-});
-
 window.addEventListener('load', playMusic('resources/MainTheme.mp3'));
 
+function redirectPage(linkLocation, num) {
+  if(!num){
+    $('body').fadeOut(num);
+  }
+  window.location = linkLocation;
+};
 
-$('#btnChute').click(function(){
-	var chute = $('#txtChute').val();
-	var audio = new Audio();
-	if (chute !== ''){
-		if (chute === palavra){
-			audio.src = '';
-			threadSleepAfeterRedirect('home.html');
-		}else{
-			audio.src = 'resources/chutefail.mp3';
-			if(muted !== true)
-				audio.play();
-			threadSleepAfeterRedirect('gameOver.html');
-		}
-	}
-})
+function inserirUsuario(nome, dif, valor){
 
-$('#btnDica').click(function(){ if(muted !== true) btnSound(); });
-$('#txtChute').focus(function(){jogavel = false;});
-$('#txtChute').blur(function(){jogavel = true;});
+  localStorage["usuarios"] = JSON.stringify({
+    "nome": nome,
+    "pontos":valor
+  });
 
-$('body').keypress(function(e){
-	if(jogavel === true){
-		var letra = String.fromCharCode(e.which);
-		letra = letra.toLowerCase();
-		if(!letra.search(/^[a-z]+$/)){
-			if (letrasJogadas.indexOf(letra) === -1){
-				jogada(letra);
-			}
-		}
-	}
-});
-$('body').keyup(function(e){
-    console.log('keyup', String.fromCharCode( e.which ));
+   $.post('http://localhost:3000/usuarios',
+    {
+      "nome": nome,
+      "dificuldade":dif,
+      "pontos":valor
+    });
+
+   location.replace('home.html?nome='+nome+'&dificuldade='+dif);
+};
+
+function pegarPalavra(){
+  $.get('http://localhost:3000/palavras').done(function(data){
+    var palavrasDisponiveis;
+    if( dificuldade === 'nunez' ){
+      palavrasDisponiveis = data.filter(function(elem){
+        return elem.texto.length >= 12;
+      });
+    }else{
+      palavrasDisponiveis = data;
+    }
+    var index = parseInt(Math.random() * palavrasDisponiveis.length);
+    palavra = palavrasDisponiveis[index].texto;
+  });
+};
+
+function getLeaderboard(){
+  var users = [];
+  var top;
+  $.get('http://localhost:3000/usuarios').done(function(data){
+     users = data;
+  });
+
+  users.sort(function(a, b){
+      return a.pontos < b.pontos;
+  });
+
+  users.forEach(function(user){
+     $('#leaderModal').append($('<h2>').html(user.nome + ' - ' + user.pontos));
+  });
+
+};
+
+function threadSleepAfeterRedirect(url, milsec){
+  setTimeout(function(){
+    redirectPage(url, 2000);
+  }, milsec || 1500);
+};
+
+function btnSound(){
+  var audio = new Audio();
+  audio.src = 'resources/btn.mp3';
+  audio.play();
+}
+
+$(document).ready(function() {
+  $("body").css("display", "none");
+  $("body").fadeIn(1000);
 });
