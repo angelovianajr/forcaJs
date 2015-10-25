@@ -96,8 +96,9 @@ function verifica () {
 };
 
 function eliminaPalavraAcertada(pala){
-	var palavrasAcertadas = JSON.parse(localStorage.getItem(jogador));
+	var palavrasAcertadas = JSON.parse(localStorage.getItem(user.nome));
 	palavrasAcertadas.palavras.push(pala);
+	localStorage.setItem(user.nome, JSON.stringify(palavrasAcertadas));
 }
 
 function getDica(){
