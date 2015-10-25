@@ -8,6 +8,7 @@ var letrasJogadas;
 var muted;
 var pontos;
 var dificuldadeAtual;
+var tempo;
 var user = {};
 
 function inicializar(){
@@ -36,6 +37,8 @@ function inicializar(){
 	limiteErros = ( dificuldadeAtual === 'nunez' ) ? 2 : 5;
 	palavra = palavra.join('');
 	$('body').append($('h2').html(insert));
+	dificuldadeAtual === 'normal' ? tempo = 60000 : tempo = 30000;
+	correrTempo();
 };
 
 function jogada (letra) {
@@ -46,8 +49,8 @@ function jogada (letra) {
 	palavra = palavra.split('');
 	insert = insert.split('');
 
-	palavra.forEach(function (let) {
-		if (let === letra){
+	palavra.forEach(function (letraPalavra) {
+		if (letraPalavra === letra){
 			user.pontos += dificuldadeAtual === 'nunez' ? 2 : 1;
 			music.src = 'resources/coin.mp3';
 			if(muted !== true)
@@ -103,6 +106,27 @@ function getDica(){
 	var index = parseInt(Math.random() * palavra.length);
 	$('#dicaModal').append($('<a>').html('A palavra contém a letra: ' + palavra[index]));
 };
+
+function correrTempo(){
+	if (tempo >= 0){
+		segundos = (tempo / 1000) % 60;
+		if (segundos < 10){
+			segundos = '0' + segundos;
+		}
+
+		tempo -= 1000;
+		$('.label').html(segundos);
+		if (tempo === 0){	
+			audio.src = 'resources/youlose.mp3';
+			if(muted !== true)
+				audio.play();
+			alert('Time out! Você perdeu!');
+			fimDeJogo('derrota');
+		}
+	}
+
+	setTimeout('correrTempo()', 1000);
+}
 
 function fimDeJogo(tipo){
 	atualizarUser(user.id, { "pontos":user.pontos });
