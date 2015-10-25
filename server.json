@@ -2,14 +2,21 @@
   "usuarios": [
     {
       "nome": "pablo",
-      "pontos": 0,
-      "dificuldade": "normal"
+      "pontos": 1,
+      "dificuldade": "normal",
+      "id": 0
     },
     {
-      "nome": "angelo",
-      "pontos": 8001,
-      "dificuldade": "nunez",
-      "id": "618da5e0-4af4-41ab-9a22-fb0278261219"
+      "nome": "pablo",
+      "dificuldade": "normal",
+      "pontos": 0,
+      "id": 1
+    },
+    {
+      "nome": "pablo",
+      "dificuldade": "normal",
+      "pontos": 0,
+      "id": 2
     }
   ],
   "palavras": [
