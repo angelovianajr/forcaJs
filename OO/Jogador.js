@@ -34,3 +34,15 @@ Jogador.prototype.inserirJogador = function(){
 
 };
 
+
+Jogador.prototype.atualizarUsuario = function(){
+
+	var self = this;
+	
+  $.ajax({
+    url: 'http://localhost:3000/usuarios/'+self.id,
+    type:'PATCH',
+    data: { "nome":self.nome, "pontos":self.pontos }
+  });
+};
+
