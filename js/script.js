@@ -7,7 +7,14 @@ $('#btnSubmit').click(function() {
   var dif = $('input[name="radioOptions"]:checked').val();
   if (nome !== '' && typeof dif !== 'undefined'){
     btnSound();
-    inserirUsuario(nome, dif, 0);
+    var user = obterJogador(nome);
+    console.log(user);
+    if(typeof user === 'undefined'){
+      inserirUsuario(nome, dif, 0);
+    }else{
+      location.replace('home.html?nome='+nome+'&dificuldade='+dif+'&id='+user.id+'&pontos='+user.pontos);
+      
+    }
     console.log($('input[name=RadioOptions]:checked').val());
     threadSleepAfeterRedirect('jogo.html', 1000);
   }
@@ -28,21 +35,7 @@ function redirectPage(linkLocation, num) {
   window.location = linkLocation;
 };
 
-function inserirUsuario(nome, radio, valor){
 
-  localStorage.setItem('dificuldade', radio);
-
-  limiteErros = ( dificuldade === 'nunez' ) ? 2 : 5;
-
-   $.post('http://localhost:3000/usuarios',
-    {
-      "nome": nome,
-      "dificuldade":radio,
-      "pontos":valor
-    });
-
-   location.replace('home.html?nome='+nome+'&dificuldade='+radio);
-};
 
 function pegarPalavra(){
   $.get('http://localhost:3000/palavras').done(function(data){
@@ -65,21 +58,23 @@ function pegarPalavra(){
 };
 
 function getLeaderboard(){
-  var users = [];
-  var top;
-  $.get('http://localhost:3000/usuarios').done(function(data){
-     users = data;
+  var i = 0;
+  arrayJogadores.sort(function(x, y){
+      return x.pontos < y.pontos; 
   });
 
-  users.sort(function(a, b){
-      return a.pontos < b.pontos;
-  });
-
-  users.forEach(function(user){
-     $('#leaderModal').append($('<h2>').html(user.nome + ' - ' + user.pontos));
+  arrayJogadores.forEach(function(user){
+    if(i < 5){
+      $('#leaderModal').append($('<p>').html(i+1 + ' - ' + user.nome + ' - ' + user.pontos));
+      i++;
+    }
   });
  
 };
+
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+}
 
 function threadSleepAfeterRedirect(url, milsec){
   setTimeout(function(){
@@ -97,3 +92,4 @@ $(document).ready(function() {
   $("body").css("display", "none");
   $("body").fadeIn(1000);
 });
+

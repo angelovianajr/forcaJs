@@ -6,6 +6,8 @@ var numJogadas;
 var letrasJogadas;
 var muted;
 var pontos;
+var dificuldadeAtual;
+var user = {};
 
 function inicializar(){
 	pontos = 0;
@@ -17,6 +19,10 @@ function inicializar(){
 	muted = false;
 	getDica();
 	palavra = palavra.split('');
+	user.nome = getURLParameter('nome');
+	dificuldadeAtual = getURLParameter('dificuldade');
+	user = obterJogador(user.nome);
+	console.log(user);
 
 	palavra.forEach(function(char) {
 		if (char !== ' '){
@@ -26,6 +32,7 @@ function inicializar(){
 		}
 	});
 
+	limiteErros = ( dificuldadeAtual === 'nunez' ) ? 2 : 5;
 	palavra = palavra.join('');
 	$('body').append($('h2').html(insert));
 };
@@ -40,7 +47,7 @@ function jogada (letra) {
 
 	palavra.forEach(function (let) {
 		if (let === letra){
-			dif === 'nunez' ? pontos+=2 : pontos++;
+			dificuldadeAtual === 'nunez' ? user.pontos+=2 : user.pontos+=1;
 			music.src = 'resources/coin.mp3';
 			if(muted !== true)
 				music.play();
@@ -75,11 +82,11 @@ function verifica () {
 		audio.src = 'resources/youlose.mp3';
 		if(muted !== true)
 			audio.play();
-		threadSleepAfeterRedirect('gameOver.html');
+		fimDeJogo('derrota');
 	}
 
 	if (palavra === insert){
-		threadSleepAfeterRedirect('home.html');
+		fimDeJogo('vitoria');
 	}
 };
 
@@ -88,13 +95,26 @@ function getDica(){
 	$('#dicaModal').append($('<a>').html('A palavra contém a letra: ' + palavra[index]));
 };
 
+function fimDeJogo(tipo){
+	atualizarUser(user);
+
+	if (tipo === 'vitoria'){
+		location.replace('home.html?nome='+user.nome+'&dificuldade='+dif+'&id='+user.id+'&pontos='+user.pontos);
+		threadSleepAfeterRedirect('home.html');
+	}
+
+	if (tipo === 'derrota'){
+		threadSleepAfeterRedirect('gameOver.html');
+	}
+};
+
 var audio;
 function playMusic(url){
 	audio = new Audio();
 	audio.src = url;
 	audio.loop = true;
 	audio.play();
-}
+};
 
 function mute(){
 	if (muted === true){
@@ -105,7 +125,7 @@ function mute(){
 		muted = true;
 		audio.muted = true;
 	}
-}
+};
 
 $('#btnMute').click(function(){
 	mute();
@@ -120,12 +140,15 @@ $('#btnChute').click(function(){
 	if (chute !== ''){
 		if (chute === palavra){
 			audio.src = '';
-			threadSleepAfeterRedirect('home.html');
+			if(muted !== true)
+				audio.play();
+			dif === 'nunez' ? user.pontos += 20 : user.pontos += 10;
+			fimDeJogo('vitoria');
 		}else{
 			audio.src = 'resources/chutefail.mp3';
 			if(muted !== true)
 				audio.play();
-			threadSleepAfeterRedirect('gameOver.html');
+			fimDeJogo('derrota');
 		}
 	}
 })
