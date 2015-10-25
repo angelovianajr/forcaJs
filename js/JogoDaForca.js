@@ -94,11 +94,6 @@ function verifica () {
 };
 
 function eliminaPalavraAcertada(pala){
-
-	palavrasDisponiveis = palavrasDisponiveis.filter(function(elem){
-		return elem.texto !== pala;
-	});
-
 	var palavrasAcertadas = JSON.parse(localStorage.getItem(user.nome));
 	palavrasAcertadas.palavras.push(pala);
 	localStorage.setItem(user.nome, JSON.stringify(palavrasAcertadas));
@@ -119,6 +114,7 @@ function fimDeJogo(tipo){
 	}
 
 	if (tipo === 'derrota'){
+		localStorage.setItem(user.nome, JSON.stringify({"palavras":[]}));
 		threadSleepAfeterRedirect('gameOver.html');
 	}
 };
