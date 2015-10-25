@@ -91,7 +91,6 @@ function verifica () {
 
 	if (palavra === insert){
 		fimDeJogo('vitoria');
-		eliminaPalavraAcertada(palavraString);
 	}
 };
 
@@ -109,6 +108,7 @@ function fimDeJogo(tipo){
 	atualizarUser(user);
 
 	if (tipo === 'vitoria'){
+		eliminaPalavraAcertada(palavraString);
 		location.replace('home.html?nome='+user.nome+'&dificuldade='+dificuldadeAtual+'&id='+user.id+'&pontos='+user.pontos);
 		threadSleepAfeterRedirect('home.html');
 	}
