@@ -7,7 +7,8 @@ $('#btnSubmit').click(function() {
   var dif = $('input[name="radioOptions"]:checked').val();
   if (nome !== '' && typeof dif !== 'undefined'){
     btnSound();
-    var user = obterJogador(nome);
+    var user;
+    setTimeout(function(){user = obterJogador(nome);}, 1000);
     console.log(user);
     if(typeof user === 'undefined'){
       inserirUsuario(nome, dif, 0);

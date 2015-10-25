@@ -99,7 +99,7 @@ function fimDeJogo(tipo){
 	atualizarUser(user);
 
 	if (tipo === 'vitoria'){
-		location.replace('home.html?nome='+user.nome+'&dificuldade='+dif+'&id='+user.id+'&pontos='+user.pontos);
+		location.replace('home.html?nome='+user.nome+'&dificuldade='+dificuldadeAtual+'&id='+user.id+'&pontos='+user.pontos);
 		threadSleepAfeterRedirect('home.html');
 	}
 
@@ -142,7 +142,7 @@ $('#btnChute').click(function(){
 			audio.src = '';
 			if(muted !== true)
 				audio.play();
-			dif === 'nunez' ? user.pontos += 20 : user.pontos += 10;
+			dificuldadeAtual === 'nunez' ? user.pontos += 20 : user.pontos += 10;
 			fimDeJogo('vitoria');
 		}else{
 			audio.src = 'resources/chutefail.mp3';

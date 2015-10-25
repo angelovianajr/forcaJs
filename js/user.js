@@ -26,7 +26,7 @@ function obterJogadorId(id){
 };
 
 function atualizarUser(user){
-  //fala aqui apenas
+ 
 };
 
 function inserirUsuario(nome, radio, valor){
