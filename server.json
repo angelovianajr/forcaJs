@@ -1,15 +1,10 @@
 {
   "usuarios": [
     {
-      "nome": "pablo",
-      "pontos": 0,
-      "dificuldade": "normal"
-    },
-    {
-      "nome": "angelo",
-      "pontos": 8001,
-      "dificuldade": "nunez",
-      "id": "618da5e0-4af4-41ab-9a22-fb0278261219"
+      "nome": "Abel",
+      "dificuldade": "normal",
+      "pontos": 11,
+      "id": "7541a4cf-c9c0-4215-9d47-fccbe5010f94"
     }
   ],
   "palavras": [
