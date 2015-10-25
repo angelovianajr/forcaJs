@@ -125,10 +125,6 @@ $('#btnChute').click(function(){
 	if (chute !== ''){
 		if (chute === palavra){
 			user.pontos += dificuldadeAtual === 'nunez' ? 20 : 10;
-			audio.src = 'resources/chuteCerteiro.mp3';
-			if(muted !== true){
-				audio.play();
-			}
 			fimDeJogo('vitoria');
 		}else{
 			audio.src = 'resources/chutefail.mp3';
