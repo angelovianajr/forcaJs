@@ -95,6 +95,11 @@ function verifica () {
 };
 
 function eliminaPalavraAcertada(pala){
+
+	palavrasDisponiveis = palavrasDisponiveis.filter(function(elem){
+		return elem.texto !== pala;
+	});
+
 	var palavrasAcertadas = JSON.parse(localStorage.getItem(user.nome));
 	palavrasAcertadas.palavras.push(pala);
 	localStorage.setItem(user.nome, JSON.stringify(palavrasAcertadas));
@@ -109,9 +114,9 @@ function fimDeJogo(tipo){
 	atualizarUser(user);
 
 	if (tipo === 'vitoria'){
+		eliminaPalavraAcertada(palavraString);
 		location.replace('home.html?nome='+user.nome+'&dificuldade='+dificuldadeAtual+'&id='+user.id+'&pontos='+user.pontos);
 		threadSleepAfeterRedirect('home.html');
-		eliminaPalavraAcertada(palavraString);
 	}
 
 	if (tipo === 'derrota'){
