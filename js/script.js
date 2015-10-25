@@ -56,8 +56,8 @@ function pegarPalavra(){
 
 function getLeaderboard(){
   var i = 0;
-  arrayJogadores.sort(function(x, y){
-      return x.pontos < y.pontos; 
+  arrayJogadores.sort(function(jogador1, jogador2){
+      return jogador1.pontos < jogador2.pontos; 
   });
 
   arrayJogadores.forEach(function(user){
