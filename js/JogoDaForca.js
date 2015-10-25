@@ -111,10 +111,10 @@ function getDica(){
 };
 
 function fimDeJogo(tipo){
-	atualizarUser(user);
+	atualizarUser(user.id, { "pontos":user.pontos });
 
 	if (tipo === 'vitoria'){
-		eliminaPalavraAcertada(palavraString);
+		eliminaPalavraAcertada(palavra);
 		location.replace('home.html?nome='+user.nome+'&dificuldade='+dificuldadeAtual+'&id='+user.id+'&pontos='+user.pontos);
 		threadSleepAfeterRedirect('home.html');
 	}

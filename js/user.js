@@ -25,27 +25,23 @@ function obterJogadorId(id){
   	return user[0];
 };
 
-function atualizarUser(user){
-   $.post('http://localhost:3000/usuarios', 
-   	{
-   	  "nome": user.nome,
-      "dificuldade": user.dificuldade,
-      "pontos": user.pontos,
-      "id": user.id
-   	}
-   );
+function atualizarUser(id, atributos){
+   $.ajax({
+    url: 'http://localhost:3000/usuarios/'+id,
+    type:'PATCH',
+    data: atributos
+  });
 };
 
 function inserirUsuario(nome, radio, valor){
     localStorage.setItem('dificuldade', radio);
 		var usuario = JSON.parse(localStorage.getItem(nome));
 		if(usuario === null){
-			localStorage.setItem(nome, JSON.stringify({"palavras":[]}))
+			localStorage.setItem(nome, JSON.stringify({"palavras":[], "nome":nome, "pontos":valor }))
 		}
     $.post('http://localhost:3000/usuarios',
     {
       "nome": nome,
-      "dificuldade":radio,
       "pontos":valor
     });
 
