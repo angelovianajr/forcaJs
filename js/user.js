@@ -26,7 +26,14 @@ function obterJogadorId(id){
 };
 
 function atualizarUser(user){
-   $.post('http://localhost:3000/usuarios', user);
+   $.post('http://localhost:3000/usuarios', 
+   	{
+   	  "nome": user.nome,
+      "dificuldade": user.dificuldade,
+      "pontos": user.pontos,
+      "id": user.id
+   	}
+   );
 };
 
 function inserirUsuario(nome, radio, valor){
