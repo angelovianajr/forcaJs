@@ -38,6 +38,12 @@ function carregarPalavras(){
     }else{
       palavrasDisponiveis = data;
     }
+      user.nome = getURLParameter('nome');
+      palavrasAcertadas = JSON.parse(localStorage.getItem(user.nome));
+      palavrasDisponiveis = palavrasDisponiveis.filter(function(palavraDisponivel){
+        return palavrasAcertadas.palavras.indexOf(palavraDisponivel.texto) === -1;
+      });
+
       pegarPalavra();
 
       inicializar();

@@ -37,7 +37,7 @@ function inserirUsuario(nome, radio, valor){
     localStorage.setItem('dificuldade', radio);
 		var usuario = JSON.parse(localStorage.getItem(nome));
 		if(usuario === null){
-			localStorage.setItem(nome, JSON.stringify({"palavras":[], "nome":nome, "pontos":valor }))
+			localStorage.setItem(nome, JSON.stringify({"palavras":[]}));
 		}
     $.post('http://localhost:3000/usuarios',
     {
