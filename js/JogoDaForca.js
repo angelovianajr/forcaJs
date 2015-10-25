@@ -91,7 +91,6 @@ function verifica () {
 
 	if (palavra === insert){
 		fimDeJogo('vitoria');
-		eliminaPalavraAcertada(palavraString);
 	}
 };
 
@@ -112,6 +111,7 @@ function fimDeJogo(tipo){
 	if (tipo === 'vitoria'){
 		location.replace('home.html?nome='+user.nome+'&dificuldade='+dificuldadeAtual+'&id='+user.id+'&pontos='+user.pontos);
 		threadSleepAfeterRedirect('home.html');
+		eliminaPalavraAcertada(palavraString);
 	}
 
 	if (tipo === 'derrota'){
@@ -153,7 +153,7 @@ $('#btnChute').click(function(){
 			audio.src = '';
 			if(muted !== true)
 				audio.play();
-			dificuldadeAtual === 'nunez' ? user.pontos += 20 : user.pontos += 10;
+			user.pontos += dificuldadeAtual === 'nunez' ? 20 : 10;
 			fimDeJogo('vitoria');
 		}else{
 			audio.src = 'resources/chutefail.mp3';
