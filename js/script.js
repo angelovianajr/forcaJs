@@ -1,6 +1,7 @@
 var dificuldade = localStorage.getItem('dificuldade');
 var limiteErros;
 var jogador;
+var palavrasDisponiveis;
 
 $('#btnSubmit').click(function() {
   var nome = $('#userName').val();
@@ -34,9 +35,10 @@ function redirectPage(linkLocation, num) {
   window.location = linkLocation;
 };
 
-function pegarPalavra(){
+
+function carregarPalavras(){
   $.get('http://localhost:3000/palavras').done(function(data){
-    var palavrasDisponiveis;
+
     if( dificuldade === 'nunez' ){
       palavrasDisponiveis = data.filter(function(elem){
         return elem.texto.length >= 12;
@@ -44,14 +46,18 @@ function pegarPalavra(){
     }else{
       palavrasDisponiveis = data;
     }
-    var index = parseInt(Math.random() * palavrasDisponiveis.length);
-    palavra = palavrasDisponiveis[index].texto;
+      pegarPalavra();
 
-    inicializar();
+      inicializar();
     //Coloquei o inicializar aqui pois ele só
     //pode executar depois da variavel palavra estar definida
   });
+}
 
+
+function pegarPalavra(){
+    var index = parseInt(Math.random() * palavrasDisponiveis.length);
+    palavra = palavrasDisponiveis[index].texto;
 };
 
 function getLeaderboard(){
