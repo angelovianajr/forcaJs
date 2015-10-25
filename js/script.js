@@ -65,9 +65,10 @@ function getLeaderboard(){
 
   if(typeof arrayJogadores !== 'undefined'){
     arrayJogadores.sort(function(jogador1, jogador2){
-        return jogador1.pontos < jogador2.pontos; 
+        return jogador1.pontos - jogador2.pontos; 
     });
 
+    arrayJogadores.reverse();
     arrayJogadores.forEach(function(user){
       if(i < 5){
         $('#leaderModal').append($('<p>').html(i+1 + ' - ' + user.nome + ' - ' + user.pontos));
