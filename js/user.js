@@ -26,14 +26,7 @@ function obterJogadorId(id){
 };
 
 function atualizarUser(user){
-  $.ajax({
-	  url: 'http://localhost:3000/usuarios',
-	  type: 'PUT',
-	  data: JSON.stringify(user),
-	  success: function(data) {
-	    alert('Load was performed.');
-	  }
-   });
+   $.post('http://localhost:3000/usuarios', user);
 };
 
 function inserirUsuario(nome, radio, valor){
