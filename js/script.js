@@ -56,17 +56,19 @@ function pegarPalavra(){
 
 function getLeaderboard(){
   var i = 0;
-  arrayJogadores.sort(function(jogador1, jogador2){
-      return jogador1.pontos < jogador2.pontos; 
-  });
 
-  arrayJogadores.forEach(function(user){
-    if(i < 5){
-      $('#leaderModal').append($('<p>').html(i+1 + ' - ' + user.nome + ' - ' + user.pontos));
-      i++;
-    }
-  });
- 
+  if(typeof arrayJogadores !== 'undefined'){
+    arrayJogadores.sort(function(x, y){
+        return x.pontos < y.pontos; 
+    });
+
+    arrayJogadores.forEach(function(user){
+      if(i < 5){
+        $('#leaderModal').append($('<p>').html(i+1 + ' - ' + user.nome + ' - ' + user.pontos));
+        i++;
+      }
+    });
+  }
 };
 
 function getURLParameter(name) {

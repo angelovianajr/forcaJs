@@ -91,13 +91,13 @@ function verifica () {
 
 	if (palavra === insert){
 		fimDeJogo('vitoria');
-		eliminaPalavraAcertada(palavraString);
 	}
 };
 
 function eliminaPalavraAcertada(pala){
-	var palavrasAcertadas = JSON.parse(localStorage.getItem(jogador));
+	var palavrasAcertadas = JSON.parse(localStorage.getItem(user.nome));
 	palavrasAcertadas.palavras.push(pala);
+	localStorage.setItem(user.nome, JSON.stringify(palavrasAcertadas));
 }
 
 function getDica(){
@@ -111,6 +111,7 @@ function fimDeJogo(tipo){
 	if (tipo === 'vitoria'){
 		location.replace('home.html?nome='+user.nome+'&dificuldade='+dificuldadeAtual+'&id='+user.id+'&pontos='+user.pontos);
 		threadSleepAfeterRedirect('home.html');
+		eliminaPalavraAcertada(palavraString);
 	}
 
 	if (tipo === 'derrota'){
