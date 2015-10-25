@@ -1,6 +1,7 @@
 var erros;
 var palavra;
 var insert;
+var palavraString;
 var jogavel;
 var numJogadas;
 var letrasJogadas;
@@ -10,6 +11,7 @@ var dificuldadeAtual;
 var user = {};
 
 function inicializar(){
+	palavraString = palavra;
 	pontos = 0;
 	erros = 0;
 	insert = '';
@@ -76,6 +78,8 @@ function jogada (letra) {
 	verifica();
 };
 
+
+
 function verifica () {
 	var audio = new Audio();
 	if(erros === limiteErros){
@@ -87,8 +91,14 @@ function verifica () {
 
 	if (palavra === insert){
 		fimDeJogo('vitoria');
+		eliminaPalavraAcertada(palavraString);
 	}
 };
+
+function eliminaPalavraAcertada(pala){
+	var palavrasAcertadas = JSON.parse(localStorage.getItem(jogador));
+	palavrasAcertadas.palavras.push(pala);
+}
 
 function getDica(){
 	var index = parseInt(Math.random() * palavra.length);
