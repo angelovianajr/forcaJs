@@ -152,7 +152,7 @@ $('#btnChute').click(function(){
 			audio.src = '';
 			if(muted !== true)
 				audio.play();
-			dificuldadeAtual === 'nunez' ? user.pontos += 20 : user.pontos += 10;
+			user.pontos += dificuldadeAtual === 'nunez' ? 20 : 10;
 			fimDeJogo('vitoria');
 		}else{
 			audio.src = 'resources/chutefail.mp3';
