@@ -49,7 +49,7 @@ function jogada (letra) {
 
 	palavra.forEach(function (let) {
 		if (let === letra){
-			dificuldadeAtual === 'nunez' ? user.pontos+=2 : user.pontos+=1;
+			user.pontos += dificuldadeAtual === 'nunez' ? 2 : 1;
 			music.src = 'resources/coin.mp3';
 			if(muted !== true)
 				music.play();
