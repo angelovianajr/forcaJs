@@ -30,10 +30,6 @@
 			font-family: 'Century Gothic', 'Segoei Ul';
 		}
 
-		h2:hover{
-			color: black;
-		}
-
 		.radio-inline{
 			font-size: 20px;
 			color: red;
@@ -66,7 +62,7 @@
 	</style>
 </head>
 <body>
-	<h2>JForca Arcade</h2>
+	<h2 id="mainTitle">JForca Arcade</h2>
         <div class="jumbotron"> 	
 	        <input id="userName" type="text"  class="form-control" placeholder="Nome de Usuário">
 	            <label class="text lb"> Dificuldade:
@@ -146,6 +142,16 @@
     	})();
 
     	window.addEventListener('load', playMusic('resources/main.mp3'));
+
+    	var textoPiscante = $('#mainTitle');
+
+		window.setInterval( function() {
+		    textoPiscante.css( 'visibility', 'hidden' );
+		    
+		    window.setTimeout( function() {
+		        textoPiscante.css( 'visibility', 'visible' );
+		    }, 150 );
+		}, 1 * 1000 );
     </script>
 </body>
 </html>
