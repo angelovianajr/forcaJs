@@ -24,7 +24,6 @@ function inicializar(){
 	user.nome = getURLParameter('nome');
 	dificuldadeAtual = getURLParameter('dificuldade');
 	user = obterJogador(user.nome);
-	console.log(user);
 
 	palavra.forEach(function(char) {
 		if (char !== ' '){

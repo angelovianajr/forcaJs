@@ -52,7 +52,7 @@ function inserirUsuario(nome, radio, valor){
 	    	});
 
 	    	location.replace('home.html?nome='+nome+'&dificuldade='+radio+'&id='+user[0].id+'&pontos='+valor);
-	    	threadSleepAfeterRedirect('jogo.html', 1000);
+        threadSleepAfeterRedirect('home.html', 1000);
    		});
    	}, 1000);
 };

@@ -8,15 +8,7 @@ $('#btnSubmit').click(function() {
   var dif = $('input[name="radioOptions"]:checked').val();
   if (nome !== '' && typeof dif !== 'undefined'){
     btnSound();
-    var user;
-    setTimeout(function(){user = obterJogador(nome);}, 1000);
-    console.log(user);
-    if(typeof user === 'undefined'){
-      inserirUsuario(nome, dif, 0);
-    }else{
-      location.replace('home.html?nome='+nome+'&dificuldade='+dif+'&id='+user.id+'&pontos='+user.pontos); 
-      threadSleepAfeterRedirect('jogo.html', 1000);
-    } 
+    inserirUsuario(nome, dif, 0);
   }
 });
 
