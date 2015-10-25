@@ -13,11 +13,9 @@ $('#btnSubmit').click(function() {
     if(typeof user === 'undefined'){
       inserirUsuario(nome, dif, 0);
     }else{
-      location.replace('home.html?nome='+nome+'&dificuldade='+dif+'&id='+user.id+'&pontos='+user.pontos);
-      
-    }
-    console.log($('input[name=RadioOptions]:checked').val());
-    threadSleepAfeterRedirect('jogo.html', 1000);
+      location.replace('home.html?nome='+nome+'&dificuldade='+dif+'&id='+user.id+'&pontos='+user.pontos); 
+      threadSleepAfeterRedirect('jogo.html', 1000);
+    } 
   }
 });
 
@@ -35,8 +33,6 @@ function redirectPage(linkLocation, num) {
   }
   window.location = linkLocation;
 };
-
-
 
 function pegarPalavra(){
   $.get('http://localhost:3000/palavras').done(function(data){

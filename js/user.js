@@ -26,21 +26,34 @@ function obterJogadorId(id){
 };
 
 function atualizarUser(user){
-  $.post('http://localhost:3000/usuarios', user);
+  $.ajax({
+	  url: 'http://localhost:3000/usuarios',
+	  type: 'PUT',
+	  data: JSON.stringify(user),
+	  success: function(data) {
+	    alert('Load was performed.');
+	  }
+   });
 };
 
 function inserirUsuario(nome, radio, valor){
-  localStorage.setItem('dificuldade', radio);
+    localStorage.setItem('dificuldade', radio);
 
-   $.post('http://localhost:3000/usuarios',
+    $.post('http://localhost:3000/usuarios',
     {
       "nome": nome,
       "dificuldade":radio,
       "pontos":valor
     });
 
-   var u = obterJogador(nome);
-   console.log(u);
+    setTimeout(function(){
+    	$.get('http://localhost:3000/usuarios').done(function(data){
+	    	var user = data.filter(function(elem){
+	    		return elem.nome === nome;
+	    	});
 
-   location.replace('home.html?nome='+nome+'&dificuldade='+radio+'&id='+u.id+'&pontos='+valor);
+	    	location.replace('home.html?nome='+nome+'&dificuldade='+radio+'&id='+user[0].id+'&pontos='+valor);
+	    	threadSleepAfeterRedirect('jogo.html', 1000);
+   		});
+   	}, 1000);
 };
