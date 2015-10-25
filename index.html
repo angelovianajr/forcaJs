@@ -9,6 +9,11 @@
 			background: #222;
 		}
 
+		footer{
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
 		p{
 			font-size: 1px;
 			color: orange;
@@ -125,8 +130,11 @@
 			    </div>
 			  </div>
 			</div>
-
         </div>
+
+    <footer>
+    	<button id="btnMute" type="button" class="btn btn-primary btn-lg">Mute</button>
+    </footer>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/user.js"></script>
@@ -136,6 +144,8 @@
     		carregarJogadores();
     		setTimeout(function(){getLeaderboard();}, 1000);
     	})();
+
+    	window.addEventListener('load', playMusic('resources/main.mp3'));
     </script>
 </body>
 </html>
