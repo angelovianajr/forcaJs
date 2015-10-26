@@ -128,6 +128,27 @@
 
     <footer>
     	<button id="btnMute" type="button" class="btn btn-primary btn-lg">Mute</button>
+    	<button id="btnAbout" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#aboutModal">
+			   Sobre
+			</button>
+			<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Desenvolvido por:</h4>
+			      </div>
+			      <div id="aboutModal" class="modal-body">
+			      	<h1>Angelo Viana</h1>
+			      	<h1>Eric Gottschalk</h1>
+			      	<h1>Pablo Brodt</h1>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Ok</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
     </footer>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
