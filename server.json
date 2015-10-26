@@ -3,7 +3,7 @@
     {
       "nome": "Abel",
       "dificuldade": "normal",
-      "pontos": 11,
+      "pontos": 0,
       "id": "7541a4cf-c9c0-4215-9d47-fccbe5010f94"
     }
   ],
@@ -346,6 +346,54 @@
     },
     {
       "texto": "whitney houston"
+    },
+    {
+      "texto": "abelha"
+    },
+    {
+      "texto": "papai noel"
+    },
+    {
+      "texto": "pipoca"
+    },
+    {
+      "texto": "suco"
+    },
+    {
+      "texto": "amigo"
+    },
+    {
+      "texto": "solucoes de ti"
+    },
+    {
+      "texto": "academia"
+    },
+    {
+      "texto": "alegria"
+    },
+    {
+      "texto": "felicidade"
+    },
+    {
+      "texto": "chorar"
+    },
+    {
+      "texto": "aviao"
+    },
+    {
+      "texto": "aviador"
+    },
+    {
+      "texto": "oculos"
+    },
+    {
+      "texto": "jogo da forca"
+    },
+    {
+      "texto": "modulo tres"
+    },
+    {
+      "texto": "finalizacao"
     }
   ]
 }
