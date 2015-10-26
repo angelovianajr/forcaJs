@@ -16,7 +16,7 @@ function inicializar(){
 	pontos = 0;
 	erros = 0;
 	insert = '';
-	jogavel = true;
+	jogavel = false;
 	numJogadas = 0;
 	letrasJogadas = [];
 	muted = false;
@@ -37,6 +37,7 @@ function inicializar(){
 	limiteErros = ( dificuldadeAtual === 'nunez' ) ? 2 : 5;
 	palavra = palavra.join('');
 	$('body').append($('h2').html(insert));
+	setTimeout(function(){jogavel = true;}, 1000);
 	dificuldadeAtual === 'normal' ? tempo = 60000 : tempo = 30000;
 	correrTempo();
 };
