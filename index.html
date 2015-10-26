@@ -63,7 +63,7 @@
 </head>
 <body>
 	<h2 id="mainTitle">JForca Arcade</h2>
-        <div class="jumbotron"> 	
+        <div class="jumbotron">
 	        <input id="userName" type="text"  class="form-control" placeholder="Nome de Usuário">
 	            <label class="text lb"> Dificuldade:
 	                <label class="radio-inline">
@@ -128,6 +128,7 @@
 
     <footer>
     	<button id="btnMute" type="button" class="btn btn-primary btn-lg">Mute</button>
+			<button id="btnReset" type="button" class="btn btn-primary btn-lg">Reset</button>
     </footer>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -144,7 +145,7 @@
     	var textoPiscante = $('#mainTitle');
 		setInterval(function() {
 		    textoPiscante.css('visibility', 'hidden');
-		    
+
 		    setTimeout(function() {
 		        textoPiscante.css('visibility', 'visible');
 		    }, 150);
