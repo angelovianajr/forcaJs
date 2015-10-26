@@ -12,6 +12,10 @@ $('#btnSubmit').click(function() {
   }
 });
 
+$('#btnReset').click(function(){
+  localStorage.setItem($('#userName').val(), JSON.stringify({"palavras":[]}));
+});
+
 $('#btnCont').click(function(){
   btnSound();
   threadSleepAfeterRedirect('index.html', 1000);
@@ -63,7 +67,7 @@ function getLeaderboard(){
 
   if(typeof arrayJogadores !== 'undefined'){
     arrayJogadores.sort(function(jogador1, jogador2){
-        return jogador1.pontos - jogador2.pontos; 
+        return jogador1.pontos - jogador2.pontos;
     });
 
     arrayJogadores.reverse();
@@ -89,7 +93,7 @@ function threadSleepAfeterRedirect(url, milsec){
 function btnSound(){
   var audio = new Audio();
   audio.src = 'resources/btn.mp3';
-  audio.play(); 
+  audio.play();
 }
 
 var audio;
@@ -120,4 +124,3 @@ $(document).ready(function() {
   $("body").css("display", "none");
   $("body").fadeIn(1000);
 });
-

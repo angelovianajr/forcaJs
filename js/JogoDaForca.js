@@ -143,7 +143,7 @@ function fimDeJogo(tipo){
 	}
 
 	if (tipo === 'derrota'){
-		localStorage.setItem(user.nome, JSON.stringify({"palavras":[]}));
+		//localStorage.setItem(user.nome, JSON.stringify({"palavras":[]}));
 		threadSleepAfeterRedirect('gameOver.html');
 	}
 };
