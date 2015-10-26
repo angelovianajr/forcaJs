@@ -142,14 +142,13 @@
     	window.addEventListener('load', playMusic('resources/main.mp3'));
 
     	var textoPiscante = $('#mainTitle');
-
-		window.setInterval( function() {
-		    textoPiscante.css( 'visibility', 'hidden' );
+		setInterval(function() {
+		    textoPiscante.css('visibility', 'hidden');
 		    
-		    window.setTimeout( function() {
-		        textoPiscante.css( 'visibility', 'visible' );
-		    }, 150 );
-		}, 1 * 1000 );
+		    setTimeout(function() {
+		        textoPiscante.css('visibility', 'visible');
+		    }, 150);
+		}, 1000);
     </script>
 </body>
 </html>
