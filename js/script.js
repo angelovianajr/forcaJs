@@ -12,10 +12,6 @@ $('#btnSubmit').click(function() {
   }
 });
 
-$('#btnReset').click(function(){
-  localStorage.setItem($('#userName').val(), JSON.stringify({"palavras":[]}));
-});
-
 $('#btnCont').click(function(){
   btnSound();
   threadSleepAfeterRedirect('index.html', 1000);

@@ -25,8 +25,6 @@ function inicializar(){
 	palavra = palavra.split('');
 	user.nome = getURLParameter('nome');
 	dificuldadeAtual = getURLParameter('dificuldade');
-	user = obterJogador(user.nome);
-
 	palavra.forEach(function(char) {
 		if (char !== ' '){
 			insert += '*';
@@ -131,21 +129,25 @@ function correrTempo(){
 }
 
 function fimDeJogo(tipo){
+	user = obterJogador(user.nome);
+	console.log(user);
 	user.pontos += pontos;
-	atualizarUser(user.id, { "pontos":user.pontos });
+	setTimeout(function(){
+		atualizarUser(user.id, { "pontos":user.pontos });
 
-	if (tipo === 'vitoria'){
-		eliminaPalavraAcertada(palavra);
-		setTimeout(function(){
-			location.replace('home.html?nome='+user.nome+'&dificuldade='+dificuldadeAtual+'&id='+user.id+'&pontos='+user.pontos);
-			threadSleepAfeterRedirect('home.html');
-		}, 1000);
-	}
+		if (tipo === 'vitoria'){
+			eliminaPalavraAcertada(palavra);
+			setTimeout(function(){
+				location.replace('home.html?nome='+user.nome+'&dificuldade='+dificuldadeAtual+'&id='+user.id+'&pontos='+user.pontos);
+				threadSleepAfeterRedirect('home.html');
+			}, 1000);
+		}
 
-	if (tipo === 'derrota'){
-		//localStorage.setItem(user.nome, JSON.stringify({"palavras":[]}));
-		threadSleepAfeterRedirect('gameOver.html');
-	}
+		if (tipo === 'derrota'){
+			localStorage.setItem(user.nome, JSON.stringify({"palavras":[]}));
+			threadSleepAfeterRedirect('gameOver.html');
+		}
+	}, 1000);
 };
 
 $('#btnChute').click(function(){
@@ -163,6 +165,11 @@ $('#btnChute').click(function(){
 		}
 	}
 })
+
+$('#btnReset').click(function(){
+	btnSound();
+    fimDeJogo('derrota');
+});
 
 $('#btnDica').click(function(){ if(muted !== true) btnSound(); });
 $('#txtChute').focus(function(){jogavel = false;});

@@ -18,6 +18,7 @@ function obterJogador(nome){
 };
 
 function obterJogadorId(id){
+  console.log(arrayJogadores);
   var user = arrayJogadores.filter(function(elem){
         return elem.id === id;});
 
@@ -26,7 +27,7 @@ function obterJogadorId(id){
 };
 
 function atualizarUser(id, atributos){
-   $.ajax({
+  $.ajax({
     url: 'http://localhost:3000/usuarios/'+id,
     type:'PATCH',
     data: atributos
