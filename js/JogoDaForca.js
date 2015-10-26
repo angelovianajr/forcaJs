@@ -133,8 +133,10 @@ function fimDeJogo(tipo){
 
 	if (tipo === 'vitoria'){
 		eliminaPalavraAcertada(palavra);
-		location.replace('home.html?nome='+user.nome+'&dificuldade='+dificuldadeAtual+'&id='+user.id+'&pontos='+user.pontos);
-		threadSleepAfeterRedirect('home.html');
+		setTimeout(function(){
+			location.replace('home.html?nome='+user.nome+'&dificuldade='+dificuldadeAtual+'&id='+user.id+'&pontos='+user.pontos);
+			threadSleepAfeterRedirect('home.html');
+		}, 1000);
 	}
 
 	if (tipo === 'derrota'){
