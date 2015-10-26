@@ -32,6 +32,8 @@ function atualizarUser(id, atributos){
     type:'PATCH',
     data: atributos
   });
+
+  setTimeout('atualizarUser', 1000);
 };
 
 function inserirUsuario(nome, radio, valor){
@@ -47,6 +49,9 @@ function inserirUsuario(nome, radio, valor){
     });
 
     setTimeout(function(){
+      $('reload-json').load('server.json', function (err, data) {
+      });
+
     	$.get('http://localhost:3000/usuarios').done(function(data){
 	    	var user = data.filter(function(elem){
 	    		return elem.nome === nome;
