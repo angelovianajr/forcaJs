@@ -9,6 +9,7 @@ var muted;
 var pontos;
 var dificuldadeAtual;
 var tempo;
+var pontos;
 var user = {};
 
 function inicializar(){
@@ -52,7 +53,7 @@ function jogada (letra) {
 
 	palavra.forEach(function (letraPalavra) {
 		if (letraPalavra === letra){
-			user.pontos += dificuldadeAtual === 'nunez' ? 2 : 1;
+			pontos += dificuldadeAtual === 'nunez' ? 2 : 1;
 			music.src = 'resources/coin.mp3';
 			if(muted !== true)
 				music.play();
@@ -130,6 +131,7 @@ function correrTempo(){
 }
 
 function fimDeJogo(tipo){
+	user.pontos += pontos;
 	atualizarUser(user.id, { "pontos":user.pontos });
 
 	if (tipo === 'vitoria'){
